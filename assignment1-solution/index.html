@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lunch Checker</title>
+
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+
+    <style>
+        .message {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body ng-app="LunchCheck">
+    <div class="container" ng-controller="LunchCheckController">
+        <h1>Lunch Checker</h1>
+
+        <!-- `ng-class` was not covered in the lectures. Similar solution would be to use an angular
+             expression inside the `class` attribute: `class="form-group {{ validationStateClass }}"`
+        -->
+        <div class="form-group" ng-class="validationStateClass">
+            <input id="lunch-menu"
+                   class="form-control"
+                   type="text"
+                   placeholder="list comma separated dishes you usually have for lunch"
+                   ng-model="lunchMenu">
+            <p class="help-block">Empty items will not be taken into account.</p>
+        </div>
+        <div class="form-group" ng-class="validationStateClass">
+            <button class="btn btn-default" ng-click="checkLunchMenu()">Check If Too Much</button>
+        </div>
+        <div class="form-group message" ng-class="validationStateClass">
+            <p class="help-block">{{ message }}</p>
+        </div>
+    </div>
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
