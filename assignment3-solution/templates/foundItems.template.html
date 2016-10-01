@@ -1,0 +1,13 @@
+<div ng-transclude="noResults" ng-if="$ctrl.items.length === 0"></div>
+
+<ul class="list-group">
+    <li class="list-group-item clearfix" ng-repeat="item in $ctrl.items track by $index">
+        <div class="action-items pull-right">
+            <button class="btn btn-default" ng-click="$ctrl.onRemove({itemIndex: $index})">
+                <span class="glyphicon glyphicon-remove"></span> Don't want this one!
+            </button>
+        </div>
+        <h4><span class="text-muted">[{{ item.short_name }}]</span> {{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+    </li>
+</ul>

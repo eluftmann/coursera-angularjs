@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Narrow Down Your Menu Choice</title>
+
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+
+        .action-items {
+            margin: 10px 0 10px 10px;
+        }
+    </style>
+</head>
+
+<body ng-app="NarrowItDownApp">
+    <div class="container" ng-controller="NarrowItDownController as $ctrl">
+        <h1 class="text-center">Narrow Down Your Chinese Menu Choice</h1>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-8 col-md-push-2">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search term" class="form-control" ng-model="$ctrl.searchTerm">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" ng-click="$ctrl.search()">Narrow It Down For Me!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-md-8 col-md-push-2">
+                <found-items items="$ctrl.found" on-remove="$ctrl.discardItem(itemIndex)" ng-cloak>
+                    <no-results>
+                        <p class="alert alert-danger">Nothing found</p>
+                    </no-results>
+                </found-items>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
