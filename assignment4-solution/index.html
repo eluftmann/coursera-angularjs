@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chinese Restaurant</title>
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/main.css">
+
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body ng-app="MenuApp">
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" ui-sref-active="active"><a ui-sref="home">Home</a></li>
+                    <li role="presentation" ui-sref-active="active"><a ui-sref="menu">Menu</a></li>
+                </ul>
+            </nav>
+            <h3>Chinese Restaurant</h3>
+        </div>
+
+        <ui-view></ui-view>
+
+        <footer class="footer">
+            <p>&copy; 2016 Chinese Restaurant</p>
+        </footer>
+    </div>
+
+    <script src="vendor/angular.min.js"></script>
+    <script src="vendor/angular-ui-router.min.js"></script>
+    <script src="src/menuapp/menuapp.module.js"></script>
+    <script src="src/menuapp/routes.config.js"></script>
+    <script src="src/menuapp/categories.component.js"></script>
+    <script src="src/menuapp/items.component.js"></script>
+    <script src="src/menuapp/menu.controller.js"></script>
+    <script src="src/menuapp/menu-detail.controller.js"></script>
+    <script src="src/data/data.module.js"></script>
+    <script src="src/data/data.constants.js"></script>
+    <script src="src/data/menu-data.service.js"></script>
+</body>
+
+</html>

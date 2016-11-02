@@ -1,0 +1,8 @@
+<div class="list-group" ng-cloak>
+    <a class="list-group-item"
+       ng-repeat="item in $ctrl.items"
+       ui-sref-active="active"
+       ui-sref="menu.detail({categoryShortName: item.short_name})">
+        {{ item.name }}
+    </a>
+</div>
