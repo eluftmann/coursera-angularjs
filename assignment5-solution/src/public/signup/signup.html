@@ -1,0 +1,47 @@
+<div class="container">
+    <h1 class="text-center mb-4">Newsletter Sign Up</h1>
+
+    <div class="text-center" ng-if="signUpCtrl.hasSignedUp">
+        <p>Thank you for signing up for our newsletter.</p>
+        <p>You can check your subscription <a ui-sref="public.myinfo">here</a>.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-push-3 col-xs-12">
+            <form class="signup-form" name="signUpForm" novalidate>
+                <div class="form-group" ng-class="{'has-error': signUpForm.firstName.$invalid && signUpForm.firstName.$touched}">
+                    <label class="control-label">First name</label>
+                    <input class="form-control" type="text" name="firstName" ng-model="signUpCtrl.firstName" required minlength="2" maxlength="16">
+                    <span class="help-block" ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched">First name must be at least 2 characters long</span>
+                    <span class="help-block" ng-if="signUpForm.firstName.$error.maxlength && signUpForm.firstName.$touched">First name must not be longer than 10 characters</span>
+                </div>
+                <div class="form-group" ng-class="{'has-error': signUpForm.lastName.$invalid && signUpForm.lastName.$touched}">
+                    <label class="control-label">Last name</label>
+                    <input class="form-control" type="text" name="lastName" ng-model="signUpCtrl.lastName" required minlength="2" maxlength="32">
+                    <span class="help-block" ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched">Last name must be at least 2 characters long</span>
+                    <span class="help-block" ng-if="signUpForm.lastName.$error.maxlength && signUpForm.lastName.$touched">Last name must not be longer than 32 characters</span>
+                </div>
+                <div class="form-group" ng-class="{'has-error': signUpForm.emailAddress.$invalid && signUpForm.emailAddress.$touched}">
+                    <label class="control-label">E-mail address</label>
+                    <input class="form-control" type="email" name="emailAddress" ng-model="signUpCtrl.emailAddress" required>
+                    <span class="help-block" ng-if="signUpForm.emailAddress.$invalid && signUpForm.emailAddress.$touched">Must be a valid email address: handle@domain format</span>
+                </div>
+                <div class="form-group" ng-class="{'has-error': signUpForm.phoneNumber.$invalid && signUpForm.phoneNumber.$touched}">
+                    <label class="control-label">Phone number</label>
+                    <input class="form-control" type="tel" name="phoneNumber" ng-model="signUpCtrl.phoneNumber" pattern="(\d{3})-(\d{3})-(\d{4})">
+                    <span class="help-block" ng-if="signUpForm.phoneNumber.$invalid && signUpForm.phoneNumber.$touched">Phone must be in the format ###-###-####.</span>
+                </div>
+                <div class="form-group" ng-class="{'has-error': signUpForm.favouriteDishNumber.$invalid && signUpForm.favouriteDishNumber.$dirty}">
+                    <label class="control-label">Favourite dish number</label>
+                    <input class="form-control" type="text" name="favouriteDishNumber" ng-model="signUpCtrl.favouriteDishNumber" ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 0}}" required dish-short-name>
+                    <span class="help-block" ng-if="signUpForm.favouriteDishNumber.$error.required && signUpForm.favouriteDishNumber.$touched">Please enter your favourite dish number</span>
+                    <span class="help-block" ng-if="signUpForm.favouriteDishNumber.$error.dishShortName && signUpForm.favouriteDishNumber.$dirty">No such menu number exists</span>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-lg btn-primary" type="submit" ng-click="signUpCtrl.signUp()" ng-disabled="signUpForm.$invalid || signUpForm.$pending">Sign up</button>
+                </div>
+            </form>
+            <p class="text-center" ng-if="signUpCtrl.formSubmitted">Your information has been saved</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+    <h1 class="text-center mb-4">My Profile</h1>
+
+    <div class="text-center" ng-if="!myInfoCtrl.hasSignedUp">
+        <p>Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></p>
+    </div>
+
+    <div class="row" ng-if="myInfoCtrl.hasSignedUp">
+        <div class="col-md-6 col-md-push-3 col-xs-12">
+            <dl class="dl-horizontal">
+                <dt>First name</dt>
+                <dd>{{ myInfoCtrl.firstName }}</dd>
+
+                <dt>Last name</dt>
+                <dd>{{ myInfoCtrl.lastName }}</dd>
+
+                <dt>E-mail address</dt>
+                <dd>{{ myInfoCtrl.emailAddress }}</dd>
+
+                <dt>Phone number</dt>
+                <dd>{{ myInfoCtrl.phoneNumber }}</dd>
+
+                <dt>Favourite dish</dt>
+                <dd>
+                    <p>{{ myInfoCtrl.favouriteDish.name }}</p>
+                    <p><small>{{ myInfoCtrl.favouriteDish.description }}</small></p>
+                    <p class="text-center">
+                        <img ng-src="{{ myInfoCtrl.apiBaseUrl }}/static/images/menu/{{ myInfoCtrl.favouriteDish.category_id }}/{{ myInfoCtrl.favouriteDish.short_name }}.jpg" alt="{{ myInfoCtrl.favouriteDish.name }}">
+                    </p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
