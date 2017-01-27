@@ -31,7 +31,7 @@
                     <input class="form-control" type="tel" name="phoneNumber" ng-model="signUpCtrl.phoneNumber" pattern="(\d{3})-(\d{3})-(\d{4})">
                     <span class="help-block" ng-if="signUpForm.phoneNumber.$invalid && signUpForm.phoneNumber.$touched">Phone must be in the format ###-###-####.</span>
                 </div>
-                <div class="form-group" ng-class="{'has-error': signUpForm.favouriteDishNumber.$invalid && signUpForm.favouriteDishNumber.$dirty}">
+                <div class="form-group" ng-class="{'has-error': signUpForm.favouriteDishNumber.$invalid && signUpForm.favouriteDishNumber.$touched}">
                     <label class="control-label">Favourite dish number</label>
                     <input class="form-control" type="text" name="favouriteDishNumber" ng-model="signUpCtrl.favouriteDishNumber" ng-model-options="{updateOn: 'default blur', debounce: {default: 500, blur: 0}}" required dish-short-name>
                     <span class="help-block" ng-if="signUpForm.favouriteDishNumber.$error.required && signUpForm.favouriteDishNumber.$touched">Please enter your favourite dish number</span>
@@ -41,7 +41,7 @@
                     <button class="btn btn-lg btn-primary" type="submit" ng-click="signUpCtrl.signUp()" ng-disabled="signUpForm.$invalid || signUpForm.$pending">Sign up</button>
                 </div>
             </form>
-            <p class="text-center" ng-if="signUpCtrl.formSubmitted">Your information has been saved</p>
+            <p class="text-center" ng-if="signUpCtrl.formSubmitted">Your information has been saved.</p>
         </div>
     </div>
 </div>

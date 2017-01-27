@@ -1,13 +1,13 @@
 .loading-indicator {
     display: block;
     width: 70px;
+    margin: 0 auto;
     position: fixed;
+    top: 40%;
     left: 0;
     right: 0;
-    margin: 0 auto;
-    top: 40%;
-    z-index: 100;
     background-color: #FFF;
+    z-index: 100;
 }
 
 .loading-indicator img {
@@ -17,4 +17,8 @@
 
 .ui-view-placeholder {
     margin-top: 60px;
+}
+
+.mb-4 {
+    margin-bottom: 40px;
 }

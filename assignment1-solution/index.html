@@ -19,12 +19,13 @@
     </style>
 </head>
 
-<body ng-app="LunchCheck">
+<body ng-app="LunchCheck" ng-strict-di>
     <div class="container" ng-controller="LunchCheckController">
         <h1>Lunch Checker</h1>
 
-        <!-- `ng-class` was not covered in the lectures. Similar solution would be to use an angular
-             expression inside the `class` attribute: `class="form-group {{ validationStateClass }}"`
+        <!-- The `ng-class` directive was not covered in the lectures.
+             Similar solution would be to use an expression inside the `class` attribute:
+             `class="form-group {{ validationStateClass }}"`.
         -->
         <div class="form-group" ng-class="validationStateClass">
             <input id="lunch-menu"
@@ -38,7 +39,7 @@
             <button class="btn btn-default" ng-click="checkLunchMenu()">Check If Too Much</button>
         </div>
         <div class="form-group message" ng-class="validationStateClass">
-            <p class="help-block">{{ message }}</p>
+            <p class="help-block" ng-bind="message"></p>
         </div>
     </div>
 

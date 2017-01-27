@@ -28,6 +28,6 @@
 
             $scope.message = (lunchMenuArray.length <= LUNCH_MENU_ITEMS_LIMIT) ? "Enjoy!" : "Too much!";
             $scope.validationStateClass = "has-success";
-        }
+        };
     }
 }());

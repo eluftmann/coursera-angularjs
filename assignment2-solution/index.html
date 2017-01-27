@@ -12,10 +12,14 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
 
     <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+
         .emptyMessage {
             font-weight: bold;
-            color: red;
             font-size: 1.2em;
+            color: red;
         }
 
         li {
@@ -33,7 +37,7 @@
     </style>
 </head>
 
-<body ng-app="ShoppingListCheckOff">
+<body ng-app="ShoppingListCheckOff" ng-strict-di>
     <div class="container">
         <h1>Shopping List Check Off</h1>
 
@@ -41,8 +45,8 @@
             <!-- To Buy List -->
             <div class="col-md-6" ng-controller="ToBuyController as toBuyCtrl">
                 <h2>To Buy:</h2>
-                <ul>
-                    <li ng-repeat="item in toBuyCtrl.items">
+                <ul ng-cloak>
+                    <li ng-repeat="item in toBuyCtrl.items track by $index">
                         Buy {{ item.quantity }} {{ item.name }}
                         <button class="btn btn-default" ng-click="toBuyCtrl.buy($index)">
                             <span class="glyphicon glyphicon-ok"></span> Bought
@@ -55,8 +59,8 @@
             <!-- Already Bought List -->
             <div class="col-md-6" ng-controller="AlreadyBoughtController as alreadyBoughtCtrl">
                 <h2>Already Bought:</h2>
-                <ul>
-                    <li ng-repeat="item in alreadyBoughtCtrl.items">Bought {{ item.quantity }} {{ item.name }}</li>
+                <ul ng-cloak>
+                    <li ng-repeat="item in alreadyBoughtCtrl.items track by $index">Bought {{ item.quantity }} {{ item.name }}</li>
                 </ul>
                 <div class="emptyMessage" ng-if="!alreadyBoughtCtrl.items.length">Nothing bought yet.</div>
             </div>

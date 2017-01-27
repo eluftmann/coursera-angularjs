@@ -11,14 +11,14 @@
     function DishShortNameDirective($q, MenuService) {
         return {
             require: "ngModel",
-            link: function (scope, element, attrs, ctrl) {
-                ctrl.$asyncValidators.dishShortName = function (modelValue, viewValue) {
-                    if (ctrl.$isEmpty(modelValue)) {
+            link: function ($scope, element, attributes, ngModelController) {
+                ngModelController.$asyncValidators.dishShortName = function (modelValue, viewValue) {
+                    if (ngModelController.$isEmpty(modelValue)) {
                         // Consider empty model invalid
                         return $q.reject();
                     }
 
-                    return MenuService.getMenuItem(modelValue);
+                    return MenuService.lookupMenuItem(modelValue);
                 };
             }
         };

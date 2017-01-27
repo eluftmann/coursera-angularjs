@@ -28,7 +28,27 @@
                 url: "/myinfo",
                 templateUrl: "src/public/myinfo/myinfo.html",
                 controller: "MyInfoController",
-                controllerAs: "myInfoCtrl"
+                controllerAs: "myInfoCtrl",
+                resolve: {
+                    userDetails: ["SignUpService", function (SignUpService) {
+                        return SignUpService.getUserData();
+                    }],
+                    userFavouriteDish: ["SignUpService", "MenuService", function (SignUpService, MenuService) {
+                        var favouriteDishNumber;
+
+                        try {
+                            favouriteDishNumber = SignUpService.getFavouriteDishNumber();
+                        } catch (error) {
+                            return null;
+                        }
+
+                        if (favouriteDishNumber) {
+                            return MenuService.getMenuItem(favouriteDishNumber);
+                        }
+
+                        return null;
+                    }]
+                }
             })
             .state("public.menu", {
                 url: "/menu",

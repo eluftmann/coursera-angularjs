@@ -9,23 +9,19 @@
         .constant("API_BASE_URL", "https://davids-restaurant.herokuapp.com");
 
 
-    MenuSearchService.$inject = ["$filter", "$q", "$http", "API_BASE_URL"];
+    MenuSearchService.$inject = ["$filter", "$http", "API_BASE_URL"];
 
-    function MenuSearchService($filter, $q, $http, API_BASE_URL) {
+    function MenuSearchService($filter, $http, API_BASE_URL) {
         var service = this;
 
         var filterItems = $filter('filter');
 
         service.getMatchedMenuItems = function (searchTerm) {
-            var deferred = $q.defer();
-
-            $http.get(API_BASE_URL + "/menu_items.json").then(
+            return $http.get(API_BASE_URL + "/menu_items.json").then(
                 function success(response) {
-                    deferred.resolve(filterItems(response.data.menu_items, {description: searchTerm}));
+                    return filterItems(response.data.menu_items, {description: searchTerm});
                 }
             );
-
-            return deferred.promise;
         };
     }
 
@@ -44,7 +40,7 @@
             controller: function () {},
             controllerAs: "$ctrl",
             bindToController: true
-        }
+        };
     }
 
 

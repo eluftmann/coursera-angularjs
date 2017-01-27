@@ -29,6 +29,10 @@
             return !!data;
         };
 
+        service.getUserData = function () {
+            return angular.copy(data);
+        };
+
         service.getFirstName = function () {
             if (!service.hasSignedUp()) {
                 throw "User has not signed up";

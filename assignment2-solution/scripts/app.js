@@ -33,7 +33,7 @@
         service.buyItem = function (buyItemIndex) {
             var item = toBuyItems.splice(buyItemIndex, 1)[0];
             boughtItems.push(item);
-        }
+        };
     }
 
 
