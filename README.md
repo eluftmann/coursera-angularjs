@@ -3,6 +3,8 @@ AngularJS Assignments Solutions
 
 This repository contains my solutions to the "[Single Page Web Applications with AngularJS](https://www.coursera.org/learn/single-page-web-apps-with-angularjs)" course assignments on the Coursera platform.
 
+Assignments were done by precisely satisfying all the extra requirements and keeping the base code clean with as little changes as necessary.
+
 
 Assignment 1
 ------------
